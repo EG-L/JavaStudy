@@ -2,7 +2,8 @@
  * 비교연산자 ==> 결과값(boolean => true/false)
  * --------사용처(조건문,반복문)
  * 숫자(정수, 실수, boolean, 문자) => 문자열은 비교할 수 없다.
- * --------------------------------------
+ *                 | ==, != 만 boolean형을 비교할 수 있다.
+ * -------------------------------------- 문자는 어떤 연산자를 사용해도 정수형으로 변경
  * 
  * 1) == 같다
  * 2) != 같지 않다
@@ -37,6 +38,22 @@ public class 비교연산자 {
 		// a<b || a == b
 		System.out.println("a>=b : "+(a>=b));
 		// a>b || a == b
+		
+		char c = (char)((Math.random()*26)+65);//1~26사이의 값 + 65
+		char d = (char)((Math.random()*26)+65);
+		System.out.println("c="+c);
+		System.out.println("d="+d);
+		System.out.println("c==d: "+(c==d));
+		System.out.println("c!=d: "+(c!=d));
+		System.out.println("c<d : "+(c<d));
+		System.out.println("c>d : "+(c>d));
+		System.out.println("c<=d : "+(c<=d));
+		System.out.println("c>=d : "+(c>=d));
+		
+		boolean b1 = false;
+		boolean b2 = true;
+		System.out.println("b1==b2:"+(b1==b2));
+		System.out.println("b1!=b2:"+(b1!=b2));
 
 	}
 
