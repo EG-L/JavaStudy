@@ -31,6 +31,37 @@ public class 논리연산자 {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		int a = 10;
+		int b = 9;
+		
+		/*
+		 * boolean bCheck = a<b&&++b==a;// 앞의 &&조건이 false이기 떄문에 뒤의 조건 실행 x //최적화 연산자
+		 * boolean bCheck1 = a>b||++b==a; // 앞의 ||조건이 true이기 때문에 뒤의 조건 실행 x // 최적화 연산자
+		 * 
+		 * System.out.println("bCheck : "+bCheck); System.out.println(b);//효율적 연산
+		 * 
+		 * System.out.println(bCheck1); System.out.println(b);
+		 */
+		b = 21;
+		
+		boolean bCheck = (a%2==0)&&(b%2!=0);
+		/*
+		 *        조건 && 조건
+		 *       true    true    ===> true
+		 *       true    false   ===> false
+		 *       false   true    ===> false
+		 *       false   false   ===> false
+		 *       
+		 *        조건 || 조건
+		 *       true    true    ===> true
+		 *       true    false   ===> true
+		 *       false   true    ===> true
+		 *       false   false   ===> false
+		 * */
+		bCheck = (a%2==0)||(b%2!=0);
+		
+		System.out.println(bCheck);
+		
 
 	}
 
