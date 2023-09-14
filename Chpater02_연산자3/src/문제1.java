@@ -9,6 +9,8 @@ public class 문제1 {
 		System.out.println("4/2="+(4/2));//2
 		System.out.println("3%2="+(3%2));//1
 		
+		//우선순위 +,-,(*,/,%) => () 최우선 순위 연산자
+		
 		System.out.println(1+2*3);//7
 		System.out.println((1+2)*3);//9
 		System.out.println(4/2*6);//12

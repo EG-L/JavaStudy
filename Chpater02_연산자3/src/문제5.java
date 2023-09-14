@@ -1,3 +1,4 @@
+//총 페이지
 import java.util.Scanner;
 public class 문제5 {
 
@@ -6,8 +7,9 @@ public class 문제5 {
 		Scanner sc = new Scanner(System.in);
 		System.out.print("농구공 개수 : ");
 		int basketball = sc.nextInt();
-		
-		System.out.println(basketball%5==0?"필요한 상자의 수 : "+basketball/5:"필요한 상자의 수 : "+((basketball/5)+1));
+//		System.out.print("필요한 상자의 수 : ");
+//		System.out.println(basketball%5==0?basketball/5:((basketball/5)+1));
+		System.out.println("필요한 박스:"+(int)(Math.ceil(basketball/5.0)));
 
 	}
 
