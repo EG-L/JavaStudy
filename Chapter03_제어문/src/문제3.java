@@ -17,9 +17,9 @@ public class 문제3 {
 		int jumsu = sc.nextInt();
 		
 		if(grade==4 && jumsu>=70 && jumsu<=100) System.out.println("합격");
-		if(grade==4 && jumsu<70) System.out.println("불합격");
+		if(grade==4 && jumsu<70 && jumsu>=0) System.out.println("불합격");
 		if(grade!=4 && jumsu>=60 && jumsu<=100) System.out.println("합격");
-		if(grade!=4 && jumsu<60) System.out.println("불합격");
+		if(grade!=4 && jumsu<60 && jumsu>=0) System.out.println("불합격");
 		if(jumsu>100||jumsu<0) System.out.println("경고");
 
 	}
