@@ -1,5 +1,7 @@
 /*
  * 2) 한 개의 정수를 입력 받아 3의 배수인지 판별하여 출력하라
+ * 
+ * if : 3의 배수 조건 ~ else : 3의 배수가 아닌 경우
  * */
 import java.util.Scanner;
 public class 문제2 {
