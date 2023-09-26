@@ -110,10 +110,74 @@
  *       --------        |------------------------------
  *                      100
  * */
+import java.util.Scanner;
 public class 배열_1 {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		// 변수 선언 => year , month => 입력
+		int year, month;
+		Scanner sc = new Scanner(System.in);
+		System.out.print("년도 입력 : ");
+		year = sc.nextInt();
+		System.out.print("월 입력 : ");
+		month = sc.nextInt();
+		// 처리 => 달력을 만들기 위한 처리 ==> 세부적 (메소드가 많을 수도 있다)
+		//=>1년 1월 1일 ~ 요청한 날짜 => 총날수 % 7 => 요일 => 1일자에 대한 요일
+		// 1. 전년도까지의 합
+		int total=(year-1)*365+(year-1)/4-(year-1)/100+(year-1)/400;//윤년 조건 => 로마시대 윤년 계산법
+		// 2. 전달까지의 합
+		int[] lastday = {31,28,31,30,31,30,31,31,30,31,30,31};
+		// 문제 발생 ==> 2월 (윤년 => 29, 윤년 x => 28 )
+		// 윤년 조건 => 프로그램에서 자주 등장 => 메소드
+		if((year%4==0&&year%100!=0)||(year%400==0)) {
+			lastday[1] = 29;
+		}
+		else {
+			lastday[1] = 28;
+		}
+		
+		//전달까지의 합
+		for(int i = 0; i<month-1;i++) {
+			total+=lastday[i];
+		}
+		// 3. +1
+		total++;
+		// 요일 구하기
+		int week = total%7;
+		/*
+		 *   char c = ' ';
+		 *   switch(week){
+		 *       case 0:
+		 *          c ='일';
+		 *          .
+		 *          .
+		 *          .
+		 *   }
+		 * */
+		char[] strWeek = {'일','월','화','수','목','금','토'};
+		// 달력 출력 ==> 메소드
+//		System.out.println(year + "년도 "+month+"월 1일은 "+strWeek[week]+"요일 입니다.");
+		
+		System.out.println(year+"년도 "+month+"월");
+		System.out.println();
+		for(int i = 0; i<strWeek.length;i++) {
+			System.out.print(strWeek[i]+"\t");
+		}
+		System.out.println();
+		for(int i = 1; i<=lastday[month-1];i++) {
+			if(i==1) {
+				for(int j = 0;j<week;j++) {
+					System.out.print("\t");
+				}
+			}
+			System.out.printf("%2d\t",i);
+			week++;
+			if(week>6) {
+				week=0;
+				System.out.println();
+			}
+		}
 
 	}
 
