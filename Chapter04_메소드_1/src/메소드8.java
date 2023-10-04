@@ -5,7 +5,7 @@
  * */
 public class 메소드8 {
 	public static void increment() {
-		int num = 1;
+		int num = 1;//지역변수
 		System.out.println(num);
 		num++;
 		
