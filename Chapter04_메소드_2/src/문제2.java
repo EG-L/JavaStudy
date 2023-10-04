@@ -14,6 +14,36 @@ public class 문제2 {
 		System.out.println("1~10까지의 합 : "+sum);
 	}
 	//1~n까지의 합을 출력하는 메소드 구현
+	/*
+	 * Method
+	 *  = callback => main => 자동 호출되는 메소드(시작점)
+	 *  = 사용자 정의 : 프로그래머가 직접 제작
+	 *  = 라이브러리 : 이미 제작된 메소드 => 만들지 못하는 프로그램
+	 *    = 자바 제공 라이브러리
+	 *    = 외부 라이브러리 (Jsoup,Spring) => mvnrespository.com
+	 *    = CBD => 조립식
+	 *    -------------- 메소드 호출
+	 *  = 조립할 때 , 재사용 , 유지보수가 편리하게 만든다
+	 *  = 재사용
+	 *    Method 호출
+	 *    ----------
+	 *     int aaa() ===> int a = aaa();
+	 *     double bbb() ===> double b = bbb();
+	 *     void ccc() ===> ccc();
+	 *     boolean ddd() ===> boolean d = ddd();
+	 *     --------------------------------------
+	 *     
+	 *     class A{
+	 *        int aaa(){
+	 *        }
+	 *     }
+	 *     class B{
+	 *        main(){
+	 *           aaa(); <<== 사용 불가
+	 *           A.aaa(); <<== 사용 가능
+	 *        }
+	 *     }
+	 * */
 	public static void sum_data2(int end) {
 		int sum = 0;
 		for(int i = 1;i<end+1;i++) {
