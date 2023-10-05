@@ -12,27 +12,38 @@
  * */
 import java.util.Scanner;
 public class 메소드3 {
-	
-
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+	public static int user_input() {
 		Scanner sc = new Scanner(System.in);
 		System.out.print("년도 입력 : ");
-		int year = sc.nextInt();
-		// 입력하는 메소드
-		
-		// 처리되는 과정
+		return sc.nextInt();
+	}
+	public static boolean isYear(int year) {
 		boolean bCheck = false;
 		if((year%4==0&&year%100!=0)||(year%400==0)) {
 			bCheck = true;
 		}
-		// 처리결과 출력
+		return bCheck;
+	}
+	public static void print(boolean bCheck) {
 		if(bCheck) {
 			System.out.println("윤년입니다.");
 		}
 		else {
 			System.out.println("윤년이 아닙니다.");
 		}
+	}
+	public static void process() {
+		print(isYear(user_input()));
+		
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		// 입력하는 메소드
+		
+		// 처리되는 과정
+		// 처리결과 출력
+		process();
 
 	}
 
