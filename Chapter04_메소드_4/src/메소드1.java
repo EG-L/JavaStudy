@@ -107,13 +107,88 @@
  *        ===> 변수/상수/메소드/클래스/인터페이스/열거형
  *            --------------------------------
  *    5) 호출 => 실행과정
+ *      --------------
+ *      int max(int a, int b)
+ *      {
+ *           return a>b?a:b;
+ *      }
+ *      => int max=max(10,20) => a=10 , b=20
+ *         --- ---- a>b?a:b
+ *          |리턴형은 넘겨주는 값보다 클 수 있다.(double long)
+ *      void max(int a, int b)
+ *      {
+ *         System.out.println(a>b?a:b);
+ *      }
+ *      => max(10,20) => 받아서 저장하는 값이 없다.
+ *    6) 메소드 유형
+ *      ----------
+ *         리턴형       매개변수
+ *         -----------------
+ *           o           o
+ *            => String
+ *               String substring(int begin)
+ *               String substring(int begin, int end)
+ *               ---------------- 메소드명이 동일 => 매개변수가 다르다.
+ *                                => 메소드가 다르다. (오버로딩)
+ *           o           x
+ *            => Math
+ *               double random() => 임의의 데이터 추출
+ *               ------ 0.0 ~ 0.99
+ *           -----------------------------
+ *           x           o
+ *            => 출력담당
+ *               void println(String s)
+ *           x           x => 빈도수가 없다.
+ *           ----------------------------- void (INSERT, UPDATE, DELETE) => CRUD
+ *             파일에 값 추가, 파일 값 삭제, 수정
+ *               void println() => 다음 줄 출력
+ *               -------------- 원형
+ *                = 사용자 정의
+ *                = 라이브러리 => 기능 , 원형 (리턴형, 매개변수)
+ *                 --------- 70% => CBD
+ *                                  Component => 기능있는 클래스
+ *                                  
  *    
  * */
+// => 모든 프로그램
+/*
+ *   입력 : 사용자로부터 전송 ==> 매개변수
+ *         => SCanner, BufferedReader, Random
+ *                     --------------
+ *                       | 예외처리 , io
+ *         => 윈도우 , 웹 => 입력창 => 버튼 / 엔터
+ *           ----------
+ *             <input type=text>
+ *             <input type=password>
+ *             <input type=button>
+ *   처리 (요청 처리) => 결과값 , 결과값이 없는 경우 => 여러개로 나눠서 처리
+ *                  ------   --------------
+ *                     |
+ *                  출력하는 메소드
+ * */
+// 1. 매개변수(X), 리턴형(X) => 자체 출력
+// ==> 리턴형이 없는 경우가 많이 존재 => 변수 전역
 public class 메소드1 {
-
+//	static int aaa() {
+//		int a = 10;
+//		a = 100;
+//		
+//		return a;
+//	}
+	// 구구단 전체 출력
+	public static void gugudan() {
+		for(int i = 1;i<10;i++) {
+			for(int j = 2;j<10;j++) {
+				System.out.printf("%2d*%2d=%2d\t",j,i,(j*i));
+			}
+			System.out.println();
+		}
+	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
+//		int a = aaa();//a라는 변수 삭제
+//		System.out.println(a);
+		gugudan();
 	}
 
 }
