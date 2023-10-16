@@ -12,6 +12,7 @@ public class MainClass {
 			System.out.println(m.getMno()+"."+m.getTitle());
 			
 		}
+		
 
 	}
 
