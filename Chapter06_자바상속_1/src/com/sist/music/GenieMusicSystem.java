@@ -21,7 +21,7 @@ import java.sql.*;
 public class GenieMusicSystem {
 	
 	protected Music[] musics = new Music[50];
-	protected String title = "지니뮤직 Top 50";
+	protected static String title = "지니뮤직 Top 50";
 	//=> 생성자 , 초기화 블록
 	{//외부 데이터를 읽어 온다 => 값을 초기화
 	 // --------- 크롤링, 파일, 오라클 ... => 구현
@@ -66,14 +66,83 @@ public class GenieMusicSystem {
 			 *    <table id="aaa"> => table#aaa
 			 *    <table class ="bbb"> => table.bbb
 			 * */
-			Elements title = doc.select("");
+			// 노래 제목, 가수명, 앨범
+			Elements title = doc.select("table.list-wrap tr.list a.title");
 			
-			Elements artist = doc.select("");
+			Elements artist = doc.select("table.list-wrap tr.list a.artist");
+			//td.info
+			Elements album = doc.select("table.list-wrap tr.list a.albumtitle");
 			
-			Elements album = doc.select("");
-			
+			for(int i = 0; i<musics.length;i++) {
+				musics[i] = new Music();
+				musics[i].setMno(i+1);
+				musics[i].setTitle(title.get(i).text());
+				musics[i].setArtist(artist.get(i).text());
+				musics[i].setAlbum(album.get(i).text());
+			}
 		}
 		catch(Exception ex) {}
+		
 	}
+	public Music[] musicAllData()
+	{
+		return musics;
+	}
+	
+	public Music[] musicTitleFindData(String title) {
+		int count = 0;
+		for(Music mm:musics) {
+			if(mm.getTitle().contains(title)) {
+				count++;
+			}
+		}
+		Music[] music = new Music[count];
+		//배열 (고정) => 가변형(컬렉션)
+		count = 0;
+		for(Music mm:musics) {
+			if(mm.getTitle().contains(title)) {
+				music[count] = mm;
+				count++;
+			}
+		}
+		
+		return music;
+	}
+	public Music[] musicartistFindData(String artist) {
+		int count = 0;
+		for(Music mm:musics) {
+			if(mm.getArtist().contains(artist)) {
+				count++;
+			}
+		}
+		
+		Music[] music = new Music[count];
+		
+		count = 0;
+		for(Music mm:musics) {
+			if(mm.getArtist().contains(artist)) {
+				music[count]=mm;
+				count++;
+				
+			}
+		}
+		
+		return music;
+	}
+	public Music musicDetailFindData(int mno) {
+		return musics[mno-1];
+	}
+	
+//	public static void main(String[] args) {
+//		Scanner sc = new Scanner(System.in);
+//		System.out.print("가수명 입력 :");
+//		String s = sc.next();
+//		GenieMusicSystem gms = new GenieMusicSystem();
+//		Music[] music = gms.musicartistFindData(s);
+//		System.out.println("검색 결과 :"+music.length+"건");
+//		for(Music m:music) {
+//			System.out.println(m.getMno()+"."+m.getTitle());
+//		}
+//	}
 
 }
