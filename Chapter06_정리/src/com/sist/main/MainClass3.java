@@ -124,7 +124,16 @@ package com.sist.main;
  *           ==> 추상클래스 , 인터페이스
  *        synchronized=> 동기적인 (네트워크,쓰레드)
  *          = 비동기 AJax 
- *          = 동기적
+ *          = 동기적 
+ *        
+ *        조합 
+ *        -----------------------------
+ *        대상            조합
+ *        클래스       public default final abstract
+ *                   protected/private ==> 사용 시 오류
+ *        변수        private final , static
+ *        메소드       public final static abstract
+ *        지역변수     final
  * */
 public class MainClass3 {
 
