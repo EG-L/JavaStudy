@@ -1,11 +1,14 @@
 package com.sist.client;
+import com.sist.VO.FoodCategoryVO;
 import com.sist.client.*;
 import com.sist.common.ImageChange;
+import com.sist.manager.FoodManager;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 /*
  * FlowLayout - JPanel
  *   -------------------
@@ -34,6 +37,7 @@ public class ClientMainForm extends JFrame implements ActionListener{
 	ControlPanel cp = new ControlPanel();
 	JLabel logo = new JLabel();
 	Login login = new Login();
+	FoodManager fm = new FoodManager();
 	public ClientMainForm() {
 		this.setLayout(null); // 직접 배치
 		logo.setBounds(10, 15, 100, 150);
@@ -57,6 +61,9 @@ public class ClientMainForm extends JFrame implements ActionListener{
 		mp.b6.addActionListener(this);
 		
 		login.b1.addActionListener(this);
+		
+		ArrayList<FoodCategoryVO> list = fm.foodCategoryData(1);
+		cp.hp.cardPrint(list);
 		
 	}
 
