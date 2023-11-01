@@ -5,20 +5,25 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
 import javax.swing.*;
 
 import com.sist.VO.FoodCategoryVO;
+import com.sist.VO.FoodHouseVO;
 import com.sist.manager.FoodManager;
 
-public class HomePanel extends JPanel implements ActionListener{
+public class HomePanel extends JPanel implements ActionListener,MouseListener{
 	JButton b1,b2,b3;
 	PosterCard[] psc = new PosterCard[12];
 	FoodManager fm =new FoodManager();
 	JPanel pan = new JPanel();
+	ControlPanel cp;
 	
-	public HomePanel() {
+	public HomePanel(ControlPanel cp) {
+		this.cp = cp;
 		JPanel p = new JPanel();
 		p.setLayout(new GridLayout(1,3,5,5));
 		b1 = new JButton("믿고 보는 맛집 리스트");
@@ -47,6 +52,7 @@ public class HomePanel extends JPanel implements ActionListener{
 		for(FoodCategoryVO vo:list) {
 			psc[i] = new PosterCard(vo);
 			pan.add(psc[i]);
+			psc[i].addMouseListener(this);
 			i++;
 		}
 	}
@@ -80,6 +86,49 @@ public class HomePanel extends JPanel implements ActionListener{
 			cardInit();
 			cardPrint(list);
 		}
+		
+	}
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		// TODO Auto-generated method stub
+		for(int i = 0; i<psc.length;i++) {
+			if(e.getSource()==psc[i]) {
+				if(e.getClickCount()==2) {
+					String title = psc[i].tLa.getText();
+					FoodCategoryVO vo = fm.categoryInfoData(title);
+					cp.fcp.la1.setText(vo.getTitle());
+					cp.fcp.la2.setText(vo.getSubject());
+					ArrayList<FoodHouseVO> list = fm.foodHouseListData(vo.getCno());
+					cp.fcp.foodPrint(list);
+					cp.card.show(cp, "catefood");
+				}
+			}
+		}
+		
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
 		
 	}
 

@@ -4,7 +4,7 @@ import java.awt.CardLayout;
 import javax.swing.*;
 
 public class ControlPanel extends JPanel{
-	public HomePanel hp = new HomePanel();
+	public HomePanel hp;
 	public ChatPanel cp = new ChatPanel();
 	public BoardListPanel blp;
 	public NewsPanel np = new NewsPanel();
@@ -12,6 +12,8 @@ public class ControlPanel extends JPanel{
 	public BoardInsertPanel bip;
 	public BoardDeletePanel bdp;
 	public BoardUpdatePanel bup;
+	public FoodCategoryListPanel fcp;
+	public FoodDetailPanel ftp;
 	
 	public CardLayout card = new CardLayout();
 	public ControlPanel() {
@@ -20,6 +22,9 @@ public class ControlPanel extends JPanel{
 		dp = new DetailPanel(this);
 		bdp = new BoardDeletePanel(this);
 		bup = new BoardUpdatePanel(this);
+		fcp = new FoodCategoryListPanel(this);
+		hp = new HomePanel(this);
+		ftp = new FoodDetailPanel(this);
 		this.setLayout(card);
 		this.add("Home",hp);
 		this.add("Detail",dp);
@@ -30,6 +35,7 @@ public class ControlPanel extends JPanel{
 		this.add("detail",dp);
 		this.add("delete",bdp);
 		this.add("update",bup);
+		this.add("catefood",fcp);
 		// => @RequestMapping("") Spring/SpringBoot
 		// => app.get("update.jsp") => NodeJS
 	}
