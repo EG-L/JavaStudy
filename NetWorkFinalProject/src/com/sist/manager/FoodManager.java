@@ -229,5 +229,16 @@ public class FoodManager {
 		}
 		return list;
 	}
+	
+	public FoodHouseVO foodInfoData(int fno) {
+		FoodHouseVO vo = new FoodHouseVO();
+		for(FoodHouseVO fVO:fList) {
+			if(fVO.getFno()==fno) {
+				vo=fVO;
+				break;
+			}
+		}
+		return vo;
+	}
 
 }

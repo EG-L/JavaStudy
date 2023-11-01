@@ -14,7 +14,7 @@ import com.sist.VO.*;
 import com.sist.common.ImageChange;
 import com.sist.manager.*;
 import java.net.*;
-public class FoodCategoryListPanel extends JPanel implements ActionListener{
+public class FoodCategoryListPanel extends JPanel implements ActionListener,MouseListener{
 	JLabel la1,la2;
 	JButton b1;
 	JTable table;
@@ -73,6 +73,9 @@ public class FoodCategoryListPanel extends JPanel implements ActionListener{
 		this.add(b1);
 		this.add(js);
 		
+		table.addMouseListener(this);
+		b1.addActionListener(this);
+		
 	}
 	public void foodPrint(ArrayList<FoodHouseVO> list) {
 		for(int i = model.getRowCount()-1;i>=0;i--) {
@@ -94,6 +97,43 @@ public class FoodCategoryListPanel extends JPanel implements ActionListener{
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		if(e.getSource()==b1) {
+			cp.card.show(cp, "Home");
+		}
+	}
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		// TODO Auto-generated method stub
+		if(e.getSource()==table) {
+			if(e.getClickCount()==2) {
+				int row = table.getSelectedRow();//선택한 행을 가져옴
+				String fno = model.getValueAt(row, 0).toString();
+				FoodHouseVO vo = fm.foodInfoData(Integer.parseInt(fno));
+				cp.fdp.foodPrint(vo);
+				cp.card.show(cp, "fdetail");
+				
+			}
+		}
+		
+	}
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void mouseExited(MouseEvent e) {
 		// TODO Auto-generated method stub
 		
 	}

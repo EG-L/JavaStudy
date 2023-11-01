@@ -17,7 +17,7 @@ public class MagazineManager {
 //		ObjectOutputStream oos = null;
 //		FileOutputStream fos = null;
 //		try {// 정상 수행 문장
-//			fr = new FileReader("c:\\java_data\\Croll.txt");
+//			fr = new FileReader("c:\\java_data\\Magazine.txt");
 //			StringBuffer sb = new StringBuffer();
 //			int i = 0;
 //			while((i=fr.read())!=-1) {
