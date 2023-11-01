@@ -104,5 +104,10 @@ public class AlbumManager {
 		
 		return list;
 	}
+	
+	public ArrayList<AlbumVO> AlbumDataRead(){
+		
+		return aList;
+	}
 
 }

@@ -15,6 +15,7 @@ public class ControlPanel extends JPanel{
 	DetailPanel dp;
 	MagazineDetailPanel mdp;
 	AlbumFindPanel afp;
+	MusicPanel mp;
 	
 	public CardLayout card = new CardLayout();
 	ControlPanel(){
@@ -26,6 +27,7 @@ public class ControlPanel extends JPanel{
 		mdp = new MagazineDetailPanel(this);
 		hp = new HomePanel(this);
 		afp = new AlbumFindPanel(this);
+		mp = new MusicPanel(this);
 		this.setLayout(card);
 		this.add("Home",hp);
 		this.add("Search",sp);
@@ -37,6 +39,7 @@ public class ControlPanel extends JPanel{
 		this.add("Detail",dp);
 		this.add("MagazineDetail",mdp);
 		this.add("AlbumFind",afp);
+		this.add("Music",mp);
 	}
 
 }

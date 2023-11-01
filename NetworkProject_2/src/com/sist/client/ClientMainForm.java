@@ -7,8 +7,11 @@ import java.awt.event.ActionEvent;
 
 import com.sist.client.*;
 import com.sist.common.ImageChange;
+import com.sist.manager.AlbumManager;
 import com.sist.manager.MagazineManager;
+import com.sist.manager.RealTimeChartManager;
 import com.sist.vo.MagazineVO;
+import com.sist.vo.RealTimeChartVO;
 
 public class ClientMainForm extends JFrame implements ActionListener{
 	MenuPanel mp = new MenuPanel();
@@ -16,6 +19,8 @@ public class ClientMainForm extends JFrame implements ActionListener{
 	ControlPanel cp = new ControlPanel();
 	Login login = new Login();
 	MagazineManager mm = new MagazineManager();
+	AlbumManager am = new AlbumManager();
+	RealTimeChartManager rtcm = new RealTimeChartManager();
 	public ClientMainForm() {
 		this.setLayout(null);
 		logo.setBounds(10, 15, 100, 150);
@@ -45,6 +50,8 @@ public class ClientMainForm extends JFrame implements ActionListener{
 		ArrayList<MagazineVO> list = mm.MagazineCategoryData(1);
 		cp.hp.cardPrint(list);
 		
+		ArrayList<RealTimeChartVO> rtList = rtcm.ReadMusicData();
+		cp.mp.MusicPrint(rtList);
 		
 	}
 	public static void main(String[] args) {
@@ -64,6 +71,8 @@ public class ClientMainForm extends JFrame implements ActionListener{
 			cp.card.show(cp, "Home");
 		}
 		else if(e.getSource()==mp.b2) {
+			cp.afp.AlbumPrint(am.AlbumDataRead());
+			cp.afp.tf.setText("");
 			cp.card.show(cp, "AlbumFind");
 		}
 		else if(e.getSource()==mp.b3) {
@@ -80,7 +89,7 @@ public class ClientMainForm extends JFrame implements ActionListener{
 			this.setVisible(true);
 		}
 		else if(e.getSource()==mp.b6) {
-			
+			cp.card.show(cp, "Music");
 		}
 		
 	}
