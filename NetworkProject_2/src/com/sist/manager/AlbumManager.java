@@ -85,5 +85,24 @@ public class AlbumManager {
 //			System.out.println(a.getNo());
 //		}
 //	}
+	public ArrayList<AlbumVO> AlbumInfoData(String title,String dataForm){
+		ArrayList<AlbumVO> list = new ArrayList<AlbumVO>();
+		if(dataForm.equals("곡명")) {
+			for(AlbumVO vo:aList) {
+				if(vo.getTitle().contains(title)) {
+					list.add(vo);
+				}
+			}
+		}
+		else if(dataForm.equals("가수명")) {
+			for(AlbumVO vo:aList) {
+				if(vo.getArtist().contains(title)) {
+					list.add(vo);
+				}
+			}
+		}
+		
+		return list;
+	}
 
 }
