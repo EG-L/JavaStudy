@@ -84,7 +84,7 @@ public class ClientMainForm extends JFrame implements ActionListener{
 			cp.card.show(cp,"Home");
 		}
 		else if(e.getSource()==mp.b2) {
-			cp.card.show(cp,"Detail");
+			cp.card.show(cp,"find");
 		}
 		else if(e.getSource()==mp.b3) {
 			cp.card.show(cp,"Chat");

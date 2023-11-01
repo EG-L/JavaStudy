@@ -240,5 +240,15 @@ public class FoodManager {
 		}
 		return vo;
 	}
+	
+	public ArrayList<FoodHouseVO> foddFindData(String title){
+		ArrayList<FoodHouseVO> list = new ArrayList<FoodHouseVO>();
+		for(FoodHouseVO fVO:fList) {
+			if(fVO.getName().contains(title)) {
+				list.add(fVO);
+			}
+		}
+		return list;
+	}
 
 }
