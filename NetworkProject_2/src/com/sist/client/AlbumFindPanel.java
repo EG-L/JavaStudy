@@ -5,11 +5,13 @@ import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.net.URL;
+import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
@@ -18,6 +20,7 @@ import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 import com.sist.common.ImageChange;
+import com.sist.manager.AlbumManager;
 import com.sist.vo.AlbumVO;
 
 public class AlbumFindPanel extends JPanel implements ActionListener{
@@ -28,6 +31,7 @@ public class AlbumFindPanel extends JPanel implements ActionListener{
 	ControlPanel cp;
 	JTable table;
 	DefaultTableModel model;
+	AlbumManager am = new AlbumManager();
 	
 	public AlbumFindPanel(ControlPanel cp) {
 		this.cp = cp;
@@ -57,6 +61,7 @@ public class AlbumFindPanel extends JPanel implements ActionListener{
 			}
 		};
 		table = new JTable(model);
+		table.setRowHeight(100);
 		JScrollPane js = new JScrollPane(table);
 		
 		this.setLayout(new BorderLayout());
@@ -70,21 +75,39 @@ public class AlbumFindPanel extends JPanel implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		if(e.getSource()==b1) {
-			if(cb.getSelectedItem()=="곡명") {
-				
+			String text = tf.getText();
+			if(text.trim().length()<1) {
+				JOptionPane.showMessageDialog(this, "검색어 입력해주세요");
+				tf.requestFocus();
+				return;
 			}
-			else {
-				
+			ArrayList<AlbumVO> listVO = null;
+			if(String.valueOf(cb.getSelectedItem()).equals("가수명")) {
+				listVO = am.AlbumInfoData(tf.getText(), "가수명");
 			}
+			else if(String.valueOf(cb.getSelectedItem()).equals("곡명")) {
+				listVO = am.AlbumInfoData(tf.getText(), "곡명");
+			}
+			cp.afp.AlbumPrint(listVO);
+			
 		}
 		
 	}
 	
-	public void AlbumPrint(AlbumVO list) {
+	public void AlbumPrint(ArrayList<AlbumVO> list) {
 		try {
-			URL url = new URL(list.getImage());
-			Image image = ImageChange.getImage(new ImageIcon(url), 90, 90);
-			image1.setIcon(new ImageIcon(image));
+			for(int i = model.getRowCount()-1;i>=0;i--) {
+				model.removeRow(i);
+			}
+			for(AlbumVO vo:list) {
+				URL url = new URL(vo.getImage());
+				Image image = ImageChange.getImage(new ImageIcon(url), 90, 90);
+				
+				Object[] data = {
+						new ImageIcon(image),vo.getAlbum(),vo.getTitle(),vo.getArtist(),vo.getRegdate()
+				};
+				model.addRow(data);
+			}
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
