@@ -38,6 +38,7 @@ public class ClientMainForm extends JFrame implements ActionListener{
 		mp.b3.addActionListener(this);
 		mp.b4.addActionListener(this);
 		mp.b5.addActionListener(this);
+		mp.b6.addActionListener(this);
 		
 		login.b1.addActionListener(this);
 		
@@ -63,7 +64,7 @@ public class ClientMainForm extends JFrame implements ActionListener{
 			cp.card.show(cp, "Home");
 		}
 		else if(e.getSource()==mp.b2) {
-			cp.card.show(cp, "Search");
+			cp.card.show(cp, "AlbumFind");
 		}
 		else if(e.getSource()==mp.b3) {
 			cp.card.show(cp, "Chat");
@@ -77,6 +78,9 @@ public class ClientMainForm extends JFrame implements ActionListener{
 		else if(e.getSource()==login.b1) {
 			login.setVisible(false);
 			this.setVisible(true);
+		}
+		else if(e.getSource()==mp.b6) {
+			
 		}
 		
 	}

@@ -76,11 +76,11 @@ public class MagazineDetailManager {
 //			System.out.println(vo.getStory());
 //		}
 //	}
-	public ArrayList<MagazineDetailVO> MagazineInfoData(int no){
-		ArrayList<MagazineDetailVO> list = new ArrayList<MagazineDetailVO>();
+	public MagazineDetailVO MagazineInfoData(int no){
+		MagazineDetailVO list = new MagazineDetailVO();
 		for(MagazineDetailVO vo:mdList) {
 			if(vo.getCno() == no) {
-				list.add(vo);
+				list = vo;
 				break;
 			}
 		}

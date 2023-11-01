@@ -47,26 +47,23 @@ public class MagazineDetailPanel extends JPanel implements ActionListener{
 		b1.addActionListener(this);
 	}
 	
-	public void MagazinePrint(ArrayList<MagazineDetailVO> list) {
+	public void MagazinePrint(MagazineDetailVO list) {
 		try {
-			for(MagazineDetailVO vo : list) {
-				la1.setText(vo.getTitle());
-				String temp = "";
-				int cnt = 0;
-				for(int i = 0;i<vo.getStory().length();i++) {
-					if(cnt==50) {
-						temp+="\n";
-						cnt = 0;
-					}
-					temp+=String.valueOf(vo.getStory().charAt(i));
-					cnt++;
+			la1.setText(list.getTitle());
+			String temp = "";
+			int cnt = 0;
+			for(int i = 0;i<list.getStory().length();i++) {
+				if(cnt==50) {
+					temp+="\n";
+					cnt = 0;
 				}
-				System.out.println(temp);
-				ta.setText(temp);
-				URL url = new URL("https:"+vo.getImage());
-				Image image = ImageChange.getImage(new ImageIcon(url), 850, 550);
-				img.setIcon(new ImageIcon(image));
+				temp+=String.valueOf(list.getStory().charAt(i));
+				cnt++;
 			}
+			ta.setText(temp);
+			URL url = new URL("https:"+list.getImage());
+			Image image = ImageChange.getImage(new ImageIcon(url), 850, 550);
+			img.setIcon(new ImageIcon(image));
 		} catch (Exception e) {
 			// TODO: handle exception
 		}

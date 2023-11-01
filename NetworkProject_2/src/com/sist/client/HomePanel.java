@@ -105,7 +105,7 @@ public class HomePanel extends JPanel implements ActionListener,MouseListener{
 			if(e.getSource()==psc[i]) {
 				if(e.getClickCount()==2) {
 					int p_no = psc[i].mno;
-					ArrayList<MagazineDetailVO> vo = mdm.MagazineInfoData(p_no);
+					MagazineDetailVO vo = mdm.MagazineInfoData(p_no);
 					cp.mdp.MagazinePrint(vo);
 					cp.card.show(cp, "MagazineDetail");
 				}

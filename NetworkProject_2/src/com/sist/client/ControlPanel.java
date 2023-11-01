@@ -14,6 +14,7 @@ public class ControlPanel extends JPanel{
 	BoardDeletePanel bdp;
 	DetailPanel dp;
 	MagazineDetailPanel mdp;
+	AlbumFindPanel afp;
 	
 	public CardLayout card = new CardLayout();
 	ControlPanel(){
@@ -24,6 +25,7 @@ public class ControlPanel extends JPanel{
 		dp = new DetailPanel(this);
 		mdp = new MagazineDetailPanel(this);
 		hp = new HomePanel(this);
+		afp = new AlbumFindPanel(this);
 		this.setLayout(card);
 		this.add("Home",hp);
 		this.add("Search",sp);
@@ -34,6 +36,7 @@ public class ControlPanel extends JPanel{
 		this.add("Delete",bdp);
 		this.add("Detail",dp);
 		this.add("MagazineDetail",mdp);
+		this.add("AlbumFind",afp);
 	}
 
 }
