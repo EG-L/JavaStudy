@@ -22,8 +22,6 @@ import java.net.*;
 import java.io.*;
 import java.util.*;
 
-import javax.sql.rowset.spi.SyncResolver;
-
 import com.sist.common.Function;
 
 public class Server implements Runnable{
