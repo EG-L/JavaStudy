@@ -1,6 +1,7 @@
 package com.sist.client;
 import com.sist.VO.FoodCategoryVO;
 import com.sist.client.*;
+import com.sist.common.Function;
 import com.sist.common.ImageChange;
 import com.sist.manager.FoodManager;
 
@@ -9,6 +10,9 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.*;
+import java.io.*;
+import java.net.*;
 /*
  * FlowLayout - JPanel
  *   -------------------
@@ -32,12 +36,17 @@ import java.util.ArrayList;
  * ---------------
  * CardLayout : 감춘다 => 클릭시 보여준다.
  * */
-public class ClientMainForm extends JFrame implements ActionListener{
+public class ClientMainForm extends JFrame implements ActionListener,Runnable{
 	MenuPanel mp = new MenuPanel();
 	ControlPanel cp = new ControlPanel();
 	JLabel logo = new JLabel();
 	Login login = new Login();
 	FoodManager fm = new FoodManager();
+	
+	//네트워크 관련
+	Socket s; // 전화기
+	OutputStream out; //송신
+	BufferedReader in; // 수신
 	public ClientMainForm() {
 		this.setLayout(null); // 직접 배치
 		logo.setBounds(10, 15, 100, 150);
@@ -99,9 +108,83 @@ public class ClientMainForm extends JFrame implements ActionListener{
 			System.exit(0);
 		}
 		else if(e.getSource()==login.b1) {
-			login.setVisible(false);
-			this.setVisible(true);
+			//서버연결
+//			login.setVisible(false);
+//			this.setVisible(true);
+			String id = login.tf1.getText();
+			if(id.trim().length()<1) {
+				login.tf1.requestFocus();
+				return ;
+			}
+			
+			String name = login.tf2.getText();
+			if(name.trim().length()<1) {
+				login.tf2.requestFocus();
+				return ;
+			}
+			String sex = "";
+			if(login.rb1.isSelected()) {
+				sex="남자";
+			}
+			else {
+				sex="여자";
+			}
+			//서버연결
+			connect(id, name, sex);
 		}
+	}
+	
+	public void connect(String id, String name, String sex) {
+		try {
+			s = new Socket("localhost",8080);//서버연결
+			out = s.getOutputStream();
+			in = new BufferedReader(new InputStreamReader(s.getInputStream()));
+			
+			out.write((Function.LOGIN+"|"+id+"|"+name+"|"+sex+"\n").getBytes());
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+	
+		}
+		//서버로부터 들어오는 데이터를 처리
+		new Thread(this).start();
+	}
+	//=>서버 동작 처리
+
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		try {
+			while(true) {
+				String msg = in.readLine();
+				StringTokenizer st = new StringTokenizer(msg,"|");
+				int protocol = Integer.parseInt(st.nextToken());
+				switch(protocol) {
+					case Function.LOGIN:{
+						String[] data= {
+								st.nextToken(),
+								st.nextToken(),
+								st.nextToken(),
+								st.nextToken()
+						};
+						cp.cp.model2.addRow(data);
+					}
+					break;
+					case Function.MYLOG:{
+						login.setVisible(false);
+						this.setVisible(true);
+					}
+					break;
+					case Function.WAITCHECK:{
+						cp.cp.pane.append(st.nextToken()+"\n");
+					}
+					break;
+				}
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
 	}
 
 }
