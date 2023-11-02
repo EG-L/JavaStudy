@@ -117,11 +117,28 @@ public class Server implements Runnable{
 						case Function.WAITCHECK://웹 => jsp
 						{
 							String data = st.nextToken();
-							messageAll(Function.WAITCHECK+"|"+data);
+							messageAll(Function.WAITCHECK+"|["+name+"]"+data);
 						}
 						break;
 						case Function.EXIT:{
-							
+							messageAll(Function.WAITCHECK+"|[알림 →]"+name+"님이 퇴장하셨습니다.");
+							messageAll(Function.EXIT+"|"+id);
+							//아이디 테이블 제거
+							for(int i = 0; i<waitVc.size();i++) {
+								Client client = waitVc.get(i);
+								if(client.id.equals(id)) {
+									messageTo(Function.MYEXIT+"|");
+									waitVc.remove(i);
+									try {
+										// 송수신 종료
+										in.close();
+										out.close();
+									} catch (Exception e) {
+										// TODO: handle exception
+									}
+									break;
+								}
+							}
 						}
 						break;
 					}

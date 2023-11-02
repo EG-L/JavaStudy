@@ -74,6 +74,11 @@ public class ClientMainForm extends JFrame implements ActionListener,Runnable{
 		ArrayList<FoodCategoryVO> list = fm.foodCategoryData(1);
 		cp.hp.cardPrint(list);
 		
+		cp.cp.tf.addActionListener(this);
+		
+		cp.cp.b6.addActionListener(this);//프로그램 종료
+		
+		this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
 	}
 
 	public static void main(String[] args) {
@@ -105,7 +110,12 @@ public class ClientMainForm extends JFrame implements ActionListener,Runnable{
 			cp.card.show(cp,"News");
 		}
 		else if(e.getSource()==mp.b6) {
-			System.exit(0);
+//			System.exit(0);
+			try {
+				out.write((Function.EXIT+"|\n").getBytes());
+			} catch (Exception e2) {
+				// TODO: handle exception
+			}
 		}
 		else if(e.getSource()==login.b1) {
 			//서버연결
@@ -131,6 +141,27 @@ public class ClientMainForm extends JFrame implements ActionListener,Runnable{
 			}
 			//서버연결
 			connect(id, name, sex);
+		}
+		else if(e.getSource() == cp.cp.tf) {
+			String msg = cp.cp.tf.getText();
+			if(msg.trim().length()<1) {
+				cp.cp.tf.requestFocus();
+				return ;
+			//채팅 메시지 전송
+			}
+			try {
+				out.write((Function.WAITCHECK+"|"+msg+"\n").getBytes());//서버로 전송
+			} catch (Exception e2) {
+				// TODO: handle exception
+			}
+			cp.cp.tf.setText("");
+		}
+		else if(e.getSource()==cp.cp.b6) {
+			try {
+				out.write((Function.EXIT+"|\n").getBytes());
+			} catch (Exception e2) {
+				// TODO: handle exception
+			}
 		}
 	}
 	
@@ -176,7 +207,23 @@ public class ClientMainForm extends JFrame implements ActionListener,Runnable{
 					}
 					break;
 					case Function.WAITCHECK:{
+						cp.cp.bar.setValue(cp.cp.bar.getMaximum());
 						cp.cp.pane.append(st.nextToken()+"\n");
+					}
+					break;
+					case Function.MYEXIT:{
+						System.exit(0);
+					}
+					break;
+					case Function.EXIT:{
+						String id = st.nextToken();
+						for(int i=0;i<cp.cp.model2.getRowCount();i++) {
+							String temp = cp.cp.model2.getValueAt(i, 0).toString();//id 찾기
+							if(id.equals(temp)) {
+								cp.cp.model2.removeRow(i);
+								break;
+							}
+						}
 					}
 					break;
 				}
