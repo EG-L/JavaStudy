@@ -72,6 +72,8 @@ public class ClientMainForm extends JFrame implements ActionListener,Runnable{
 		
 		cp.cp.b4.addActionListener(this);
 		
+		cp.afp.AlbumPrint(am.AlbumDataRead());
+		
 		this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
 		
 	}
@@ -92,8 +94,6 @@ public class ClientMainForm extends JFrame implements ActionListener,Runnable{
 			cp.card.show(cp, "Home");
 		}
 		else if(e.getSource()==mp.b2) {
-			cp.afp.AlbumPrint(am.AlbumDataRead());
-			cp.afp.tf.setText("");
 			cp.card.show(cp, "AlbumFind");
 		}
 		else if(e.getSource()==mp.b3) {

@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*;
 import com.sist.vo.*;
+import com.sist.common.ImageChange;
 import com.sist.manager.*;
 
 public class BoardDeletePanel extends JPanel implements ActionListener{

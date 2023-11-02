@@ -22,7 +22,7 @@ public class ChatPanel extends JPanel{
 		table1 = new JTable(model1);
 		
 		JScrollPane js = new JScrollPane(table1);
-		js.setBounds(365,15,450,350);
+		js.setBounds(365,75,450,350);
 		this.add(js);
 		
 		String[] col2 = {"ID","이름","성별","위치"};
@@ -32,7 +32,7 @@ public class ChatPanel extends JPanel{
 		table2 = new JTable(model2);
 		
 		JScrollPane js2 = new JScrollPane(table2);
-		js2.setBounds(365, 375, 450, 300);
+		js2.setBounds(365, 435, 450, 300);
 		this.add(js2);
 		
 		pane = new JTextArea();
@@ -41,11 +41,11 @@ public class ChatPanel extends JPanel{
 		bar=js3.getVerticalScrollBar();
 		
 		pane.setEditable(false);
-		js3.setBounds(825,15,380,310);
+		js3.setBounds(825,75,380,310);
 		this.add(js3);
 		
 		tf = new JTextField();
-		tf.setBounds(825, 330, 380, 30);
+		tf.setBounds(825, 390, 380, 30);
 		this.add(tf);
 		
 		image = new JLabel();
@@ -70,7 +70,7 @@ public class ChatPanel extends JPanel{
 		p.add(b4);
 		p.add(b5);
 		p.add(b6);
-		p.setBounds(825, 370, 380, 310);
+		p.setBounds(825, 400, 380, 310);
 		this.add(p);
 		this.add(image);
 		this.add(image2);		

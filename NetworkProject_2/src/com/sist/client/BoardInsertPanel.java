@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Date;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -12,12 +13,13 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+import com.sist.common.ImageChange;
 import com.sist.manager.BoardManager;
 import com.sist.vo.BoardVO;
 
 public class BoardInsertPanel extends JPanel implements ActionListener{
 	ControlPanel cp;
-	JLabel la,la1,la2,la3,la4;
+	JLabel la,la1,la2,la3,la4,image,image2;
 	JTextField tf1,tf2,tf3;
 	JTextArea ta;
 	JButton b1,b2;
@@ -45,6 +47,14 @@ public class BoardInsertPanel extends JPanel implements ActionListener{
 		b1 = new JButton("글쓰기");
 		b2 = new JButton("취소");
 		
+		image = new JLabel();
+		image.setIcon(new ImageIcon(ImageChange.getImage(new ImageIcon("c:\\java_data\\catimage.png"), 300, 600)));
+		image.setBounds(70,70,300,600);
+		
+		image2 = new JLabel();
+		image2.setIcon(new ImageIcon(ImageChange.getImage(new ImageIcon("c:\\java_data\\catfootprint.png"), 300, 600)));
+		image2.setBounds(1150,70,300,600);
+		
 		la1.setBounds(400, 105, 70, 30);
 		tf1.setBounds(475, 105, 150, 30);
 		
@@ -65,6 +75,8 @@ public class BoardInsertPanel extends JPanel implements ActionListener{
 		this.add(js);
 		this.add(la4);
 		this.add(tf3);
+		this.add(image);
+		this.add(image2);
 		
 		JPanel p = new JPanel();
 		p.add(b1);

@@ -5,37 +5,38 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import com.sist.vo.*;
+import com.sist.common.ImageChange;
 import com.sist.manager.*;
 
 public class DetailPanel extends JPanel implements ActionListener{
     ControlPanel cp;// 화면 변경 
     JLabel titleLa;
-    JLabel la1,la2,la3,la4,la5;
+    JLabel la1,la2,la3,la4,la5,image,image2;
     JLabel noLa,nameLa,dateLa,hitLa,subLa;
     JTextPane pane;
     JButton b1,b2,b3;
     BoardManager bm=new BoardManager();
     public DetailPanel(ControlPanel cp)
     {
-   	 this.cp=cp;
-   	 titleLa=new JLabel("내용보기");
-    	 titleLa.setFont(new Font("맑은 고딕",Font.BOLD,45));
-    	 titleLa.setHorizontalAlignment(JLabel.CENTER);
+    	this.cp=cp;
+    	titleLa=new JLabel("내용보기");
+    	titleLa.setFont(new Font("맑은 고딕",Font.BOLD,45));
+    	titleLa.setHorizontalAlignment(JLabel.CENTER);
     	 
-    	 la1=new JLabel("번호");
-    	 la1.setHorizontalAlignment(JLabel.CENTER);
+    	la1=new JLabel("번호");
+    	la1.setHorizontalAlignment(JLabel.CENTER);
     	 
-    	 la2=new JLabel("작성일");
-   	 la2.setHorizontalAlignment(JLabel.CENTER);
+    	la2=new JLabel("작성일");
+   	 	la2.setHorizontalAlignment(JLabel.CENTER);
    	 
-   	 la3=new JLabel("이름");
-    	 la3.setHorizontalAlignment(JLabel.CENTER);
+   	 	la3=new JLabel("이름");
+   	 	la3.setHorizontalAlignment(JLabel.CENTER);
     	 
-    	 la4=new JLabel("조회수");
-   	 la4.setHorizontalAlignment(JLabel.CENTER);
+   	 	la4=new JLabel("조회수");
+   	 	la4.setHorizontalAlignment(JLabel.CENTER);
    	 
-   	 la5=new JLabel("제목");
-    	 la5.setHorizontalAlignment(JLabel.CENTER);
+   	 	la5=new JLabel("제목");
+   	 	la5.setHorizontalAlignment(JLabel.CENTER);
     	 
     	 noLa=new JLabel();
     	 nameLa=new JLabel();
@@ -50,8 +51,18 @@ public class DetailPanel extends JPanel implements ActionListener{
     	 b2=new JButton("삭제");
     	 b3=new JButton("목록");
     	 
+    	image = new JLabel();
+ 		image.setIcon(new ImageIcon(ImageChange.getImage(new ImageIcon("c:\\java_data\\catimage.png"), 300, 600)));
+ 		image.setBounds(70,70,300,600);
+ 		
+ 		image2 = new JLabel();
+ 		image2.setIcon(new ImageIcon(ImageChange.getImage(new ImageIcon("c:\\java_data\\catfootprint.png"), 300, 600)));
+ 		image2.setBounds(1150,70,300,600);
+    	 
     	 //배치 
     	 setLayout(null);
+    	 this.add(image2);
+    	 this.add(image);
     	 titleLa.setBounds(400, 15, 720, 60);
   	     add(titleLa);
   	    

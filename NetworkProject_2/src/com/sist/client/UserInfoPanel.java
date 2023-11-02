@@ -45,6 +45,7 @@ public class UserInfoPanel extends JFrame{
 		this.add(la6);
 		this.add(la7);
 		this.add(la8);
+		this.setResizable(false);
 		this.setVisible(true);
 	}
 	//ID,이름,성별,위치
