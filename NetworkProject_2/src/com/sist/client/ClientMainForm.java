@@ -68,6 +68,8 @@ public class ClientMainForm extends JFrame implements ActionListener,Runnable{
 		
 		cp.cp.b6.addActionListener(this);//프로그램 종료
 		
+		cp.cp.b4.addActionListener(this);
+		
 		this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
 		
 	}
@@ -146,12 +148,25 @@ public class ClientMainForm extends JFrame implements ActionListener,Runnable{
 		else if(e.getSource()==mp.b6) {
 			cp.card.show(cp, "Music");
 		}
+		else if(e.getSource()==cp.cp.b4) {
+			String[] info = new String[4];
+			int row = cp.cp.table2.getSelectedRow();
+			if(row==-1) {
+				JOptionPane.showMessageDialog(this, "정보를 보기 위한 사용자를 클릭해주세요.");
+				return;
+			}
+			UserInfoPanel uip = new UserInfoPanel();
+			for(int i = 0;i<cp.cp.table2.getColumnCount();i++) {
+				info[i] = String.valueOf(cp.cp.table2.getModel().getValueAt(row, i));
+			}
+			uip.UserData(info);
+		}
 		
 	}
 	
 	public void connect(String id, String name, String sex) {
 		try {
-			s = new Socket("192.168.0.133",8080);//서버연결
+			s = new Socket("192.168.0.130",8080);//서버연결
 			out = s.getOutputStream();
 			in = new BufferedReader(new InputStreamReader(s.getInputStream()));
 			
