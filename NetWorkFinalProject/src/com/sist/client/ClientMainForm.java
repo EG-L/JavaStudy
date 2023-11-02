@@ -167,7 +167,7 @@ public class ClientMainForm extends JFrame implements ActionListener,Runnable{
 	
 	public void connect(String id, String name, String sex) {
 		try {
-			s = new Socket("localhost",8080);//서버연결
+			s = new Socket("192.168.0.133",8080);//서버연결
 			out = s.getOutputStream();
 			in = new BufferedReader(new InputStreamReader(s.getInputStream()));
 			
