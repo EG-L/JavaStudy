@@ -70,7 +70,7 @@ public class ChatPanel extends JPanel{
 		p.add(b4);
 		p.add(b5);
 		p.add(b6);
-		p.setBounds(825, 400, 380, 310);
+		p.setBounds(825, 425, 380, 310);
 		this.add(p);
 		this.add(image);
 		this.add(image2);		
