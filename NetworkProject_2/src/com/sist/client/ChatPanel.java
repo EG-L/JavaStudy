@@ -3,12 +3,15 @@ import java.awt.GridLayout;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+
+import com.sist.common.ImageChange;
 public class ChatPanel extends JPanel{
 	JTable table1,table2;
 	DefaultTableModel model1,model2;//테이블모델 선언
 	JTextArea pane;
 	JTextField tf;
 	JButton b1,b2,b3,b4,b5,b6;
+	JLabel image,image2;
 	JScrollBar bar;
 	public ChatPanel() {
 		setLayout(null);
@@ -19,7 +22,7 @@ public class ChatPanel extends JPanel{
 		table1 = new JTable(model1);
 		
 		JScrollPane js = new JScrollPane(table1);
-		js.setBounds(10,15,450,350);
+		js.setBounds(365,15,450,350);
 		this.add(js);
 		
 		String[] col2 = {"ID","이름","성별","위치"};
@@ -29,7 +32,7 @@ public class ChatPanel extends JPanel{
 		table2 = new JTable(model2);
 		
 		JScrollPane js2 = new JScrollPane(table2);
-		js2.setBounds(10, 375, 450, 300);
+		js2.setBounds(365, 375, 450, 300);
 		this.add(js2);
 		
 		pane = new JTextArea();
@@ -38,12 +41,20 @@ public class ChatPanel extends JPanel{
 		bar=js3.getVerticalScrollBar();
 		
 		pane.setEditable(false);
-		js3.setBounds(470,15,380,310);
+		js3.setBounds(825,15,380,310);
 		this.add(js3);
 		
 		tf = new JTextField();
-		tf.setBounds(470, 330, 380, 30);
+		tf.setBounds(825, 330, 380, 30);
 		this.add(tf);
+		
+		image = new JLabel();
+		image.setIcon(new ImageIcon(ImageChange.getImage(new ImageIcon("c:\\java_data\\catimage.png"), 300, 600)));
+		image.setBounds(70,70,300,600);
+		
+		image2 = new JLabel();
+		image2.setIcon(new ImageIcon(ImageChange.getImage(new ImageIcon("c:\\java_data\\catfootprint.png"), 300, 600)));
+		image2.setBounds(1150,70,300,600);
 		
 		b1 = new JButton("방만들기");
 		b2 = new JButton("방들어가기");
@@ -59,8 +70,9 @@ public class ChatPanel extends JPanel{
 		p.add(b4);
 		p.add(b5);
 		p.add(b6);
-		p.setBounds(470, 370, 380, 310);
+		p.setBounds(825, 370, 380, 310);
 		this.add(p);
-		
+		this.add(image);
+		this.add(image2);		
 	}
 }

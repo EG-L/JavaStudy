@@ -39,25 +39,25 @@ public class BoardUpdatePanel extends JPanel implements ActionListener{
     	 
     	 // 배치 
     	 setLayout(null);// css
-    	 titleLa.setBounds(10, 15, 720, 60);
+    	 titleLa.setBounds(400, 15, 720, 60);
 	   	 add(titleLa);
 	   	 
-	   	 la1.setBounds(10,85, 80, 30);
-	   	 tf1.setBounds(95,85,150, 30);
+	   	 la1.setBounds(400,85, 80, 30);
+	   	 tf1.setBounds(485,85,150, 30);
 	   	 
-	   	 la2.setBounds(10,120, 80, 30);
-	   	 tf2.setBounds(95,120,450, 30);
+	   	 la2.setBounds(400,120, 80, 30);
+	   	 tf2.setBounds(485,120,450, 30);
 	   	 
-	   	 la3.setBounds(10,155, 80, 30);
-	   	 js.setBounds(95,155,450, 350);
+	   	 la3.setBounds(400,155, 80, 30);
+	   	 js.setBounds(485,155,450, 350);
 	   	 
-	   	 la4.setBounds(10,510, 80, 30);
-	   	 pf.setBounds(95,510,150, 30);
+	   	 la4.setBounds(400,510, 80, 30);
+	   	 pf.setBounds(485,510,150, 30);
 	   	 
 	   	 JPanel p=new JPanel();
 	   	 p.add(b1);
 	   	 p.add(b2);
-	   	 p.setBounds(10, 545,525 , 35);
+	   	 p.setBounds(450, 545,525 , 35);
 	   	 add(la5);
 	   	 // 추가
 	   	 add(la1);add(tf1);

@@ -10,11 +10,12 @@ import java.util.ArrayList;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
+import com.sist.common.ImageChange;
 import com.sist.manager.BoardManager;
 import com.sist.vo.BoardVO;
 //import com.sist.manager.*;
 public class BoardListPanel extends JPanel implements ActionListener,MouseListener{
-	JLabel la,pageLa;
+	JLabel la,pageLa,image,image2;
 	JButton b1,b2,b3,b4;
 	JTable table;
 	DefaultTableModel model;
@@ -38,10 +39,10 @@ public class BoardListPanel extends JPanel implements ActionListener,MouseListen
 		table = new JTable(model);
 		table.getTableHeader().setReorderingAllowed(false);
 		table.setShowVerticalLines(false);
-		table.setRowHeight(40);
+		table.setRowHeight(58);
 		table.getColumn("번호").setPreferredWidth(30);
-		table.getColumn("제목").setPreferredWidth(400);
-		table.getColumn("이름").setPreferredWidth(10);
+		table.getColumn("제목").setPreferredWidth(380);
+		table.getColumn("이름").setPreferredWidth(30);
 		table.getColumn("작성일").setPreferredWidth(150);
 		table.getColumn("조회수").setPreferredWidth(50);
 		
@@ -59,13 +60,13 @@ public class BoardListPanel extends JPanel implements ActionListener,MouseListen
 		this.setLayout(null);
 		la.setHorizontalAlignment(JLabel.CENTER);
 		la.setFont(new Font("굴림체",Font.BOLD,35));
-		la.setBounds(10, 15, 710, 50);
+		la.setBounds(400, 15, 710, 50);
 		this.add(la);
 		
-		b1.setBounds(10, 75, 100, 30);
+		b1.setBounds(400, 75, 100, 30);
 		this.add(b1);
 		
-		js.setBounds(10, 115, 710, 450);
+		js.setBounds(400, 115, 710, 600);
 		this.add(js);
 		
 		JPanel p = new JPanel();
@@ -73,8 +74,19 @@ public class BoardListPanel extends JPanel implements ActionListener,MouseListen
 		p.add(pageLa);
 		p.add(b4);
 		
-		p.setBounds(10, 570, 710, 35);
+		p.setBounds(400, 720, 710, 35);
 		this.add(p);
+		
+		image = new JLabel();
+		image.setIcon(new ImageIcon(ImageChange.getImage(new ImageIcon("c:\\java_data\\catimage.png"), 300, 600)));
+		image.setBounds(70,70,300,600);
+		
+		image2 = new JLabel();
+		image2.setIcon(new ImageIcon(ImageChange.getImage(new ImageIcon("c:\\java_data\\catfootprint.png"), 300, 600)));
+		image2.setBounds(1150,70,300,600);
+		
+		this.add(image);
+		this.add(image2);
 		
 		b1.addActionListener(this);
 		b3.addActionListener(this);

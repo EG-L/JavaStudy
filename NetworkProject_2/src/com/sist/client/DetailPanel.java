@@ -52,32 +52,32 @@ public class DetailPanel extends JPanel implements ActionListener{
     	 
     	 //배치 
     	 setLayout(null);
-    	 titleLa.setBounds(10, 15, 720, 60);
+    	 titleLa.setBounds(400, 15, 720, 60);
   	     add(titleLa);
   	    
-  	     la1.setBounds(10, 85, 60, 30);
-  	     noLa.setBounds(75, 85, 300, 30);
-  	     la2.setBounds(385, 85, 60, 30);
-	     dateLa.setBounds(450, 85, 300, 30);
+  	     la1.setBounds(400, 85, 60, 30);
+  	     noLa.setBounds(465, 85, 300, 30);
+  	     la2.setBounds(775, 85, 60, 30);
+	     dateLa.setBounds(840, 85, 300, 30);
   	     add(la1);add(noLa);add(la2);add(dateLa);
 	     
-	     la3.setBounds(10, 120, 60, 30);
-  	     nameLa.setBounds(75, 120, 300, 30);
-  	     la4.setBounds(385, 120, 60, 30);
-	     hitLa.setBounds(450, 120, 300, 30);
+	     la3.setBounds(400, 120, 60, 30);
+  	     nameLa.setBounds(465, 120, 300, 30);
+  	     la4.setBounds(775, 120, 60, 30);
+	     hitLa.setBounds(840, 120, 300, 30);
 	     
 	     add(la3);add(nameLa);add(la4);add(hitLa);
-	     la5.setBounds(10, 155, 60, 30);
-  	     subLa.setBounds(75, 155, 615, 30);
+	     la5.setBounds(400, 155, 60, 30);
+  	     subLa.setBounds(465, 155, 615, 30);
   	     add(la5);add(subLa);
-  	     js.setBounds(10, 190, 675, 150);
+  	     js.setBounds(400, 190, 675, 150);
   	     add(js);
   	     
   	     JPanel p=new JPanel();
   	     p.add(b1);
   	     p.add(b2);
   	     p.add(b3);
-  	     p.setBounds(10, 350, 675, 35);
+  	     p.setBounds(400, 350, 675, 35);
   	     add(p);
   	     
   	     b3.addActionListener(this);

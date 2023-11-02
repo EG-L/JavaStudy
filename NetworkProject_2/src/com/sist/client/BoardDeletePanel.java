@@ -27,17 +27,17 @@ public class BoardDeletePanel extends JPanel implements ActionListener{
     	b1=new JButton("삭제");
     	b2=new JButton("취소");
     	setLayout(null);
-    	titleLa.setBounds(10, 15, 720, 60);
+    	titleLa.setBounds(400, 15, 720, 60);
   	    add(titleLa);
   	    add(la1);
-  	    la.setBounds(200, 100, 80, 30);
-  	    pf.setBounds(290, 100, 200, 30);
+  	    la.setBounds(590, 100, 80, 30);
+  	    pf.setBounds(680, 100, 200, 30);
   	    add(la);add(pf);
   	    
   	    JPanel p=new JPanel();
   	    p.add(b1);
   	    p.add(b2);
-  	    p.setBounds(200, 175, 290, 35);
+  	    p.setBounds(590, 175, 290, 35);
   	    add(p);
   	    
   	    b1.addActionListener(this);

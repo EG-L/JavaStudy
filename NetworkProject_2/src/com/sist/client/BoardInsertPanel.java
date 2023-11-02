@@ -27,7 +27,7 @@ public class BoardInsertPanel extends JPanel implements ActionListener{
 		this.setLayout(null);
 		la.setHorizontalAlignment(JLabel.CENTER);
 		la.setFont(new Font("굴림체",Font.BOLD,35));
-		la.setBounds(10, 15, 710, 50);
+		la.setBounds(400, 45, 710, 50);
 		this.add(la);
 		
 		la1 = new JLabel("이름");
@@ -45,17 +45,17 @@ public class BoardInsertPanel extends JPanel implements ActionListener{
 		b1 = new JButton("글쓰기");
 		b2 = new JButton("취소");
 		
-		la1.setBounds(10, 75, 70, 30);
-		tf1.setBounds(85, 75, 150, 30);
+		la1.setBounds(400, 105, 70, 30);
+		tf1.setBounds(475, 105, 150, 30);
 		
-		la2.setBounds(10, 115, 70, 30);
-		tf2.setBounds(85, 115, 450, 30);
+		la2.setBounds(400, 145, 70, 30);
+		tf2.setBounds(475, 145, 450, 30);
 		
-		la3.setBounds(10, 155, 70, 30);
-		js.setBounds(85, 155, 550, 350);
+		la3.setBounds(400, 185, 70, 30);
+		js.setBounds(475, 185, 550, 350);
 		
-		la4.setBounds(10, 515, 70, 30);
-		tf3.setBounds(85, 515, 150, 30);
+		la4.setBounds(400, 545, 70, 30);
+		tf3.setBounds(475, 545, 150, 30);
 		
 		this.add(la1);
 		this.add(tf1);
@@ -69,7 +69,7 @@ public class BoardInsertPanel extends JPanel implements ActionListener{
 		JPanel p = new JPanel();
 		p.add(b1);
 		p.add(b2);
-		p.setBounds(10, 555, 625, 40);
+		p.setBounds(400, 585, 625, 40);
 		this.add(p);
 		
 		b1.addActionListener(this);

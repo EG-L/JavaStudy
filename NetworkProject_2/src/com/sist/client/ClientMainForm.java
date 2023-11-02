@@ -42,12 +42,14 @@ public class ClientMainForm extends JFrame implements ActionListener,Runnable{
 		mp.setBounds(10,175,100,250);
 		this.add("North",mp);
 		
-		cp.setBounds(135,15,1500,750);
+		cp.setBounds(130,15,1500,830);
 		this.add(cp);
 		
-		this.setSize(1650, 840);
+		this.setSize(1650, 880);
 		
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		
+		this.setResizable(false);
 		
 		mp.b1.addActionListener(this);
 		mp.b2.addActionListener(this);
@@ -166,7 +168,7 @@ public class ClientMainForm extends JFrame implements ActionListener,Runnable{
 	
 	public void connect(String id, String name, String sex) {
 		try {
-			s = new Socket("192.168.0.130",8080);//서버연결
+			s = new Socket("localhost",8080);//서버연결
 			out = s.getOutputStream();
 			in = new BufferedReader(new InputStreamReader(s.getInputStream()));
 			
